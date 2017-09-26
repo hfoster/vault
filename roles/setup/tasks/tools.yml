@@ -1,0 +1,38 @@
+- name: "Enable YUM caching"
+  lineinfile: dest=/etc/yum.conf regexp=^keepcache line=keepcache=1
+
+- name: "Make YUM cache"
+  command: "yum -y makecache"
+
+- name: "Add YUM repo for EPEL"
+  yum_repository:
+    name: epel
+    description: Extra Packages for Enterprise Linux
+    baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch
+    gpgcheck: yes
+    gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7Server
+    enabled: yes
+
+- name: "YUM update"
+  yum: name=* state=latest
+
+- name: "Install basic system tools"
+  yum:
+    name: wget,vim,libvirt,lxc,lxc-devel,python2,python-devel,python-pip,gcc,debootstrap,perl,lxc-templates
+    state: latest
+
+- name: "Update pip"
+  pip:
+    name: pip
+    state: latest
+
+- name: "Install dependencies for LXC"
+  pip:
+    name: lxc-python2
+    state: latest
+
+- name: "Make sure libvirt daemon is running"
+  service: name=libvirtd enabled=yes state=restarted
+
+- name: "Make sure LXC daemon is running"
+  service: name=lxc enabled=yes state=started

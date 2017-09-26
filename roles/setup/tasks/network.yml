@@ -1,0 +1,8 @@
+- name: "Apply eth1 config"
+  copy: src=ifcfg-eth1 dest=/etc/sysconfig/network-scripts/ifcfg-eth1 mode="0644"
+
+- name: "Apply networking master config"
+  copy: src=network dest=/etc/sysconfig/network mode="0644"
+
+- name: "Bounce network"
+  service: name=network state=restarted
