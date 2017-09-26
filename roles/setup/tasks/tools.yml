@@ -18,7 +18,7 @@
 
 - name: "Install basic system tools"
   yum:
-    name: wget,vim,libvirt,lxc,lxc-devel,python2,python-devel,python-pip,gcc,debootstrap,perl,lxc-templates
+    name: wget,vim,libvirt,lxc,lxc-devel,python2,python-devel,python-pip,gcc,debootstrap,perl,lxc-templates,unzip
     state: latest
 
 - name: "Update pip"

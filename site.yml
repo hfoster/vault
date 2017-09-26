@@ -4,3 +4,10 @@
   become_method: sudo
   roles:
     - setup
+
+- name: "Vault setup"
+  hosts: all
+  become: yes
+  become_method: sudo
+  roles:
+    - vault_install
