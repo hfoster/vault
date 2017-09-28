@@ -18,3 +18,7 @@
   become_method: sudo
   roles:
     - vault_install
+  vars:
+    vault_version: "0.8.3"
+    os_name: "linux"
+    os_arch: "amd64"
