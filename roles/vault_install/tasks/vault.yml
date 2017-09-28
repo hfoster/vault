@@ -1,10 +1,11 @@
+- include_vars: "containers.yml"
+
 - name: "Grab the archive"
   get_url:
     url: https://releases.hashicorp.com/vault/0.8.3/vault_0.8.3_linux_amd64.zip
     dest: /tmp/vault.zip
 
 - name: "Unzip the binary"
-  command: unzip -o /tmp/vault.zip -d /usr/bin/
-
-- name: "Verify installation"
-  command: vault -v
+  command: unzip -o /tmp/vault.zip -d {{ item.cont_rootfs}}/usr/bin/
+  with_items:
+    - "{{ vault_container }}"

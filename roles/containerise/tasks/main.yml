@@ -1,0 +1,2 @@
+- name: "Build and start LXC container(s)"
+  include: lxc.yml
