@@ -9,11 +9,3 @@
   command: unzip -o /tmp/vault.zip -d {{ item.cont_rootfs}}/usr/bin/
   with_items:
     - "{{ vault_container }}"
-
-- name: "Verify installation"
-  lxc_container:
-    name: "{{ item.cont_name }}"
-    container_command: |
-      vault -v
-  with_items:
-    - "{{ vault_container }}"
