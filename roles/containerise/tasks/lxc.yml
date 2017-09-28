@@ -1,0 +1,11 @@
+- include_vars: "containers.yml"
+
+- name: "Create Vault container"
+  lxc_container:
+    name: "{{ item.cont_name }}"
+    container_log: "{{ item.cont_container_log }}"
+    template: "{{ item.cont_template }}"
+    template_options: "{{ item.cont_template_opts }}"
+    state: "{{ item.cont_state }}"
+  with_items:
+    - "{{ vault_container }}"

@@ -5,6 +5,13 @@
   roles:
     - setup
 
+- name: "Build container(s)"
+  hosts: all
+  become: yes
+  become_method: sudo
+  roles:
+    - containerise
+
 - name: "Vault setup"
   hosts: all
   become: yes
