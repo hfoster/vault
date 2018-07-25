@@ -1,2 +1,0 @@
-- name: "Download Vault"
-  include: vault.yml

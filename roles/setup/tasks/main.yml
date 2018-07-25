@@ -1,5 +1,0 @@
-- name: "Setup networking"
-  include: network.yml
-
-- name: "Install tools..."
-  include: tools.yml

@@ -1,8 +1,0 @@
-vault_container:
-- name: "vault_container"
-  cont_name: "vault0"
-  cont_template: "download"
-  cont_template_opts: "--dist centos --release 7 --arch amd64"
-  cont_state: "started"
-  cont_rootfs: "/var/lib/lxc/vault0/rootfs"
-  cont_container_log: True
