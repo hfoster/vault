@@ -3,8 +3,13 @@ data "aws_ami" "centos7" {
   most_recent = true
 
   filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  filter {
     name   = "name"
-    values = ["centos-*-plain-x86_64-*"]
+    values = ["CentOS Linux 7*"]
   }
 }
 

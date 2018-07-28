@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "vpc_cidr_block" {
   description = "The base CIDR block for the VPC"
-  default     = "172.0.0.0/8"
+  default     = "10.0.0.0/16"
 }
 
 variable "ec2_key_pair" {
