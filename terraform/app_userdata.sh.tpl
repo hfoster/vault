@@ -2,7 +2,8 @@
 
 APP_DL_LINK=https://releases.hashicorp.com/${app_name}/${app_version}/${app_name}_${app_version}_linux_amd64.zip
 
-wget $APP_DL_LINK -O /tmp/${app_name}.zip
-unzip /tmp/${app_name}.zip
-mv /tmp/${app_name} /usr/bin/${app_name}
-export PATH=/usr/bin/:$PATH
+yum -y install epel-release wget unzip
+wget $APP_DL_LINK -O /usr/bin/${app_name}.zip
+unzip /usr/bin/${app_name}.zip -d /usr/bin/
+rm /usr/bin/${app_name}.zip
+vault server -dev -dev-root-token-id="root"

@@ -22,3 +22,23 @@ variable "app_version" {
   description = "Our app version"
   default     = "0.10.4"
 }
+
+variable "app_instance_type" {
+  default = "t2.nano"
+}
+
+variable "web_instance_type" {
+  default = "t2.nano"
+}
+
+variable "asg_min_instances" {
+  default = "1"
+}
+
+variable "asg_max_instances" {
+  default = "3"
+}
+
+variable "asg_desired_capacity" {
+  default = "1"
+}
