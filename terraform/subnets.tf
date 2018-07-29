@@ -32,9 +32,10 @@ resource "aws_subnet" "private3" {
 }
 
 resource "aws_subnet" "public1" {
-  vpc_id            = "${aws_vpc.main.id}"
-  cidr_block        = "10.0.4.0/24"
-  availability_zone = "${data.aws_availability_zones.available.names[0]}"
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block              = "10.0.4.0/24"
+  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
+  map_public_ip_on_launch = true
 
   tags {
     Name = "public-subnet-1"
@@ -42,9 +43,10 @@ resource "aws_subnet" "public1" {
 }
 
 resource "aws_subnet" "public2" {
-  vpc_id            = "${aws_vpc.main.id}"
-  cidr_block        = "10.0.5.0/24"
-  availability_zone = "${data.aws_availability_zones.available.names[1]}"
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block              = "10.0.5.0/24"
+  availability_zone       = "${data.aws_availability_zones.available.names[1]}"
+  map_public_ip_on_launch = true
 
   tags {
     Name = "public-subnet-2"
@@ -52,9 +54,10 @@ resource "aws_subnet" "public2" {
 }
 
 resource "aws_subnet" "public3" {
-  vpc_id            = "${aws_vpc.main.id}"
-  cidr_block        = "10.0.6.0/24"
-  availability_zone = "${data.aws_availability_zones.available.names[2]}"
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block              = "10.0.6.0/24"
+  availability_zone       = "${data.aws_availability_zones.available.names[2]}"
+  map_public_ip_on_launch = true
 
   tags {
     Name = "public-subnet-3"
