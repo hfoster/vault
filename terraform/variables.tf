@@ -12,3 +12,13 @@ variable "ec2_key_pair" {
   description = "The AWS Key Pair for accessing hosts"
   default     = "eu-west-2-test.key"
 }
+
+variable "app_name" {
+  description = "The app we're installing"
+  default     = "vault"
+}
+
+variable "app_version" {
+  description = "Our app version"
+  default     = "0.10.4"
+}

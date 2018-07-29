@@ -13,12 +13,22 @@ data "aws_ami" "centos7" {
   }
 }
 
+data "template_file" "app_userdata" {
+  template = "${file("app_userdata.sh.tpl")}"
+
+  vars {
+    app_name    = "${var.app_name}"
+    app_version = "${var.app_version}"
+  }
+}
+
 resource "aws_launch_configuration" "app_conf" {
   name            = "app-config"
   image_id        = "${data.aws_ami.centos7.id}"
   instance_type   = "t2.micro"
   key_name        = "${var.ec2_key_pair}"
   security_groups = ["${aws_security_group.web.id}", "${aws_security_group.ssh_in.id}"]
+  user_data       = "${data.template_file.app_userdata.rendered}"
 
   lifecycle {
     create_before_destroy = true
@@ -41,6 +51,7 @@ resource "aws_launch_configuration" "web_conf" {
   instance_type   = "t2.nano"
   key_name        = "${var.ec2_key_pair}"
   security_groups = ["${aws_security_group.web.id}", "${aws_security_group.ssh_jump.id}"]
+  user_data       = "${file("web_userdata.sh")}"
 
   lifecycle {
     create_before_destroy = true
