@@ -38,7 +38,3 @@ variable "asg_min_instances" {
 variable "asg_max_instances" {
   default = "3"
 }
-
-variable "asg_desired_capacity" {
-  default = "1"
-}
