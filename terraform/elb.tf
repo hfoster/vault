@@ -2,8 +2,8 @@
 resource "aws_elb" "web_lb" {
   name                      = "web-load-balancer"
   cross_zone_load_balancing = true
-  subnets                   = ["${aws_subnet.public1.id}", "${aws_subnet.public2.id}", "${aws_subnet.public3.id}"]
-  security_groups           = ["${aws_security_group.web.id}"]
+  subnets                   = ["${module.infrastructure.public_subnet1_id}", "${module.infrastructure.public_subnet2_id}", "${module.infrastructure.public_subnet3_id}"]
+  security_groups           = ["${module.infrastructure.web_security_group_id}"]
   internal                  = false
 
   listener {
@@ -29,8 +29,8 @@ resource "aws_elb" "web_lb" {
 resource "aws_elb" "app_lb" {
   name                      = "app-load-balancer"
   cross_zone_load_balancing = true
-  subnets                   = ["${aws_subnet.private1.id}", "${aws_subnet.private2.id}", "${aws_subnet.private3.id}"]
-  security_groups           = ["${aws_security_group.web.id}"]
+  subnets                   = ["${module.infrastructure.private_subnet1_id}", "${module.infrastructure.private_subnet2_id}", "${module.infrastructure.private_subnet3_id}"]
+  security_groups           = ["${module.infrastructure.web_security_group_id}"]
   internal                  = true
 
   listener {
