@@ -4,5 +4,5 @@ provider "aws" {
 }
 
 module "infrastructure" {
-  source = "git@github.com:hfoster/common-infrastructure.git"
+  source = "git@github.com:hfoster/terraform-infrastructure-modules.git//high-availability"
 }
