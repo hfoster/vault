@@ -4,8 +4,7 @@ variable "aws_region" {
 }
 
 variable "ec2_key_pair" {
-  description = "The AWS Key Pair for accessing hosts"
-  default     = "eu-west-2-test.key"
+  description = "The AWS Key Pair for accessing hosts. Define at apply time with the -var flag"
 }
 
 variable "app_name" {
@@ -32,4 +31,17 @@ variable "asg_min_instances" {
 
 variable "asg_max_instances" {
   default = "3"
+}
+
+variable "route53_zone_id" {
+  description = "The AWS Route53 Zone to which we are adding our DNS records. Define at apply time with the -var flag"
+}
+
+variable "domain_name" {
+  description = "The domain under which we will create our subdomains. Define at apply time with the -var flag"
+}
+
+variable "env_name" {
+  description = "Environment name with a trailing dot - e.g. 'dev.'. Leave blank for Production."
+  default     = "dev."
 }
