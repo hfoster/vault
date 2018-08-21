@@ -22,6 +22,14 @@ data "template_file" "app_userdata" {
   }
 }
 
+data "template_file" "web_userdata" {
+  template = "${file("web_userdata.sh.tpl")}"
+
+  vars {
+    internal_url = "${aws_route53_record.vault-internal.name}"
+  }
+}
+
 resource "aws_launch_configuration" "app_conf" {
   ebs_optimized   = false
   image_id        = "${data.aws_ami.centos7.id}"
@@ -54,7 +62,7 @@ resource "aws_launch_configuration" "web_conf" {
   instance_type   = "${var.web_instance_type}"
   key_name        = "${var.ec2_key_pair}"
   security_groups = ["${module.infrastructure.web_security_group_id}", "${module.infrastructure.ssh_jump_security_group_id}"]
-  user_data       = "${file("web_userdata.sh")}"
+  user_data       = "${data.template_file.web_userdata.rendered}"
 
   root_block_device {
     delete_on_termination = true
