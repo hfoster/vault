@@ -21,6 +21,6 @@ resource "aws_autoscaling_group" "app_asg" {
   launch_configuration = "${aws_launch_configuration.app_conf.name}"
   min_size             = "${var.asg_min_instances}"
   max_size             = "${var.asg_max_instances}"
-  vpc_zone_identifier  = ["${data.terraform_remote_state.infrastructure.private_subnet_ids}"]
+  vpc_zone_identifier  = ["${data.terraform_remote_state.infrastructure.public_subnet_ids}"]
   load_balancers       = ["${aws_elb.web_lb.id}"]
 }
