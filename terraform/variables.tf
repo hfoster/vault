@@ -38,7 +38,7 @@ variable "domain_name" {
 }
 
 variable "env_name" {
-  description = "Environment name - e.g. 'dev'. Leave blank for Production. Defne at plan time with the -var flag"
+  description = "Environment name - e.g. lab/dev/prod. Define at plan time with the -var flag"
 }
 
 variable "infra_bucket_name" {

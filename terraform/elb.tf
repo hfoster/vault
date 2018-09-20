@@ -1,6 +1,6 @@
 #Elastic Load Balencers
 resource "aws_elb" "web_lb" {
-  name                      = "web-load-balancer"
+  name_prefix               = "${var.env_name}-"
   cross_zone_load_balancing = true
   subnets                   = ["${data.terraform_remote_state.infrastructure.public_subnet_ids}"]
   security_groups           = ["${data.terraform_remote_state.infrastructure.elb_security_group_id}"]
@@ -22,6 +22,6 @@ resource "aws_elb" "web_lb" {
   }
 
   tags {
-    Name = "${var.env_name}-web-elb"
+    Name = "vault-${var.env_name}-elb"
   }
 }
