@@ -39,3 +39,7 @@ data "terraform_remote_state" "infrastructure" {
     region = "${var.aws_region}"
   }
 }
+
+data "aws_route53_zone" "base_domain" {
+  name = "${var.base_domain_name}"
+}

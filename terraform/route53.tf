@@ -1,7 +1,7 @@
 #Route53 domain and DNS configuration
 resource "aws_route53_record" "vault-external" {
-  zone_id = "${var.route53_zone_id}"
-  name    = "${var.env_name != "prod" ? "vault.${var.env_name}.${var.domain_name}" : "vault.${var.domain_name}"}"
+  zone_id = "${data.aws_route53_zone.base_domain.zone_id}"
+  name    = "${var.env_name != "prod" ? "vault.${var.env_name}.${data.aws_route53_zone.base_domain.name}" : "vault.${data.aws_route53_zone.base_domain.name}"}"
   type    = "A"
 
   alias {

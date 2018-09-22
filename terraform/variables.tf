@@ -29,11 +29,7 @@ variable "asg_max_instances" {
   default = "3"
 }
 
-variable "route53_zone_id" {
-  description = "The AWS Route53 Zone to which we are adding our DNS records. Define at plan time with the -var flag"
-}
-
-variable "domain_name" {
+variable "base_domain_name" {
   description = "The domain under which we will create our subdomains. Define at plan time with the -var flag"
 }
 
