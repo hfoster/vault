@@ -37,6 +37,10 @@ variable "env_name" {
   description = "Environment name - e.g. lab/dev/prod. Define at plan time with the -var flag"
 }
 
+variable "infra_module" {
+  description = "Infrastructure module name§ - e.g. high-availability or single-az. Define at plan time with the -var flag"
+}
+
 variable "infra_bucket_name" {
   description = "The Terraform backend S3 bucket name"
   default     = "terraform-infrastructure-modules-backend-bucket"

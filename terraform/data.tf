@@ -35,7 +35,7 @@ data "terraform_remote_state" "infrastructure" {
 
   config {
     bucket = "${var.infra_bucket_name}"
-    key    = "modules/high-availability/${var.env_name}.tfstate"
+    key    = "modules/${var.infra_module}/${var.env_name}.tfstate"
     region = "${var.aws_region}"
   }
 }
